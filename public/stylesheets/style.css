@@ -1,0 +1,22 @@
+/*--PAGE HEADER--*/
+nav {
+  background-color: rgb(66, 112, 182);
+}
+
+nav div {
+  padding: 0 30px;
+}
+
+section {
+  width: 85%;
+  margin: 0 auto;
+}
+
+.searchCnContainer h2 {
+  font-size: 32px;
+}
+
+.containerInput {
+  min-height: 200px;
+  white-space: pre-wrap;
+}
