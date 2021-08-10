@@ -5,13 +5,15 @@ const searchCnContainer = async (event) => {
   //prevent default
   event.preventDefault();
   //select textarea
-  const containerList = document.querySelector('.containerInput').value;
+  let containerList = document.querySelector('.containerInput').value;
+  //API only accepts uppercase letters
+  containerList = containerList.toUpperCase();
   //split and seperate all alphanumerics to array
-  let containerArr = containerList.split(/\W/)
+  let containerArr = containerList.split(/\W/);
   //remove all blank array elements
   containerArr = containerArr.filter(container => {
     if (container !== "") {
-      return container;
+      return container.toUpperCase();
     }
   });
   //clear textarea and table display

@@ -16,6 +16,8 @@ router.post('/', async (req, res) => {
   containerArr.forEach(container => {
     equipment += container.substring(0, 10) + ",";
   });
+  equipment = equipment.substring(0, equipment.length-1);
+  console.log(equipment)
   //Call function to get CN data
   let equipEtaData = await getEquipData(equipment)
     .then(data => {
@@ -29,7 +31,6 @@ router.post('/', async (req, res) => {
     })
   //Blank array for data output
   let equipData = [];
-  
   containerArr.forEach(container => {
     //Find index
     const index = equipEtaData.response.findIndex(eachEquip => {
