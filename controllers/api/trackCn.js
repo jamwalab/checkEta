@@ -41,6 +41,7 @@ router.post('/', async (req, res) => {
       console.log(equipEtaData.response[index]);
       equipData.push({
         container: equipEtaData.response[index].EquipmentId,
+        loaded: equipEtaData.response[index].LoadEmpty,
         destination: equipEtaData.response[index].Destination,
         eta: equipEtaData.response[index].ETA,
         event: equipEtaData.response[index].Event,

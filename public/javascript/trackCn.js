@@ -43,9 +43,11 @@ const searchCnContainer = async (event) => {
         cnDispThead.innerHTML = `<tr>
         <th>Container#</th>
         <th>Destination</th>
+        <th>Load Status</th>
+        <th>ETA Status</th>
         <th>ETA</th>
-        <th>ETA description</th>
         <th>Status</th>
+        <th>Status Location</th>
         <th>Status time</th>
         <th>Storage</th>
         </tr>`
@@ -56,8 +58,11 @@ const searchCnContainer = async (event) => {
         //loop each returned array element and extract data
         data.forEach(row => {
           //if no data is returned create blank rows
+          console.log(row);
           if (row.container == "no data") {
             tBodyInnerHtml += `<tr><td>${row.containerNumFull}</td>
+            <td>--</td>
+            <td>--</td>
             <td>--</td>
             <td>--</td>
             <td>--</td>
@@ -69,9 +74,11 @@ const searchCnContainer = async (event) => {
           else {
             tBodyInnerHtml += `<tr><td>${row.containerNumFull}</td>
             <td>${row.destination.Station}</td>
-            <td>${row.eta.Time}</td>
+            <td>${row.loaded === 'L' ? 'Loaded' : 'Empty'}</td>
             <td>${row.eta.Description}</td>
+            <td>${row.eta.Time}</td>
             <td>${row.event.Description}</td>
+            <td>${row.event.Location.Station}</td>
             <td>${row.event.Time}</td>
             <td>${row.storage.LastFreeDay}</td></tr>`
           }
