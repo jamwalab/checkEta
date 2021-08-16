@@ -1,4 +1,4 @@
-var axios = require('axios');
+const axios = require('axios');
 
 //CN data API call function
 const getEquipData = async (equipment) => {
