@@ -12,11 +12,24 @@ section {
   margin: 0 auto;
 }
 
-.searchCnContainer h2 {
+.searchCnContainer h2, .searchPortEta h2 {
   font-size: 32px;
 }
 
 .containerInput {
   min-height: 200px;
   white-space: pre-wrap;
+}
+
+.searchContHead {
+  display: flex;
+  justify-content: space-between;
+}
+
+.searchPortEta h2 {
+  margin: 15px;
+}
+
+.input-field {
+  margin-bottom: 0;
 }
