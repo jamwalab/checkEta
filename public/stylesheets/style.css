@@ -7,20 +7,24 @@ nav div {
   padding: 0 30px;
 }
 
+/*--Displayarea settings--*/
 section {
   width: 85%;
   margin: 0 auto;
 }
 
-.searchCnContainer h2, .searchPortEta h2 {
-  font-size: 32px;
-}
-
+/*--Textarea settings--*/
 .containerInput {
   min-height: 200px;
   white-space: pre-wrap;
 }
 
+/*--Common display settings--*/
+.searchCnContainer h2, .searchPortEta h2 {
+  font-size: 32px;
+}
+
+/*--PortEta display settings--*/
 .searchContHead {
   display: flex;
   justify-content: space-between;

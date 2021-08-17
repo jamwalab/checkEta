@@ -10,6 +10,11 @@ const searchCnContainer = async (event) => {
   containerList = containerList.toUpperCase();
   //split and seperate all alphanumerics to array
   let containerArr = containerList.split(/\W/);
+  //If no containers
+  if (!containerArr.length) {
+    displayCnData.innerHTML = "NO CONTAINERS ADDED! PLEASE TRY AGAIN!";
+    return;
+  }
   //remove all blank array elements
   containerArr = containerArr.filter(container => {
     if (container !== "") {
