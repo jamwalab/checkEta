@@ -32,10 +32,8 @@ const searchPortEta = async (event) => {
   //clear textarea and table display
   document.querySelector('.containerInput').value = "";
   displayPortEta.innerHTML = "";
-  console.log(searchSite, containerArr);
   switch(searchSite) {
     case "1":
-      console.log(searchSite, containerArr);
       searchContainerCall("maersk", containerArr);
       break;
     default:
@@ -45,7 +43,6 @@ const searchPortEta = async (event) => {
 
 //---DISPLAY RESULE TABLE---//
 const printTable = async (containerData) => {
-  console.log(containerData)
   if (containerData.destination) {
     return `<tr><td>${containerData.container}</td>
     <td>${containerData.destination}</td>
@@ -101,7 +98,6 @@ const searchContainerCall = async (site, containerArr) => {
   )
   .then(containerDataArr => {
     tBodyHtml = containerDataArr.join("")
-    console.log(tBodyHtml)
     //add to table body
     portDispBody.innerHTML = tBodyHtml
     //append to parent elements

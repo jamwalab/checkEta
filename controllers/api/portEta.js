@@ -7,8 +7,6 @@ router.get('/', (req,res) => {
 
 //----MAERSK CONTAINER STATUS LOGIC----//
 router.post('/maersk', async (req, res) => {
-  console.log(req.body.container);
-
   const config = {
     method: 'GET',
     url: `https://api.maersk.com/track/${req.body.container}?operator=MAEU`,
@@ -28,7 +26,6 @@ router.post('/maersk', async (req, res) => {
       });
     })
     .catch(err => {
-      console.log(err.response.data)
       res.json({
         container: req.body.container,
         destination: false,
