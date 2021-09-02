@@ -12,11 +12,15 @@ router.post('/maersk', async (req, res) => {
     url: `https://api.maersk.com/track/${req.body.container}?operator=MAEU`,
   };
 
+  console.log(`https://api.maersk.com/track/${req.body.container}?operator=MAEU`)
   axios(config)
     .then(response => {
       const timeFormat = response.data.containers[0].eta_final_delivery.split("T");
       response.data.containers[0].eta_final_delivery = timeFormat.join(", Time: ")
-      console.log(response);
+      console.log(response.status);
+      console.log(response.config.url);
+      console.log(response.data);
+      console.log(response.data.containers);
       res.json({
         container: req.body.container,
         destination: response.data.destination.terminal,
