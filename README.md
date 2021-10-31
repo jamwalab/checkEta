@@ -17,7 +17,7 @@ Helps track estimated time of arrivals of containers in bulk, displaying the res
 ## Installation
 No installation required.
 
-[Link to the deployed app](https://pure-eyrie-01841.herokuapp.com/)
+[Link to the deployed app](https://hidden-cliffs-50551.herokuapp.com/)
 
 ## Usage
 * Provides user option to search containers eta at port or the rail yard.
