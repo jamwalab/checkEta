@@ -2,6 +2,7 @@
 const express = require('express');
 const routes = require('./controllers');
 const exphbs = require('express-handlebars');
+const fileUpload = require('express-fileupload');
 const hbs = exphbs.create({});
 const path = require('path');
 
@@ -9,6 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 //-----MIDDLEWARE-----//
+app.use(fileUpload());
 //Parse incoming string or array
 app.use(express.urlencoded({extended: true}));
 //Parse incoming Json data
