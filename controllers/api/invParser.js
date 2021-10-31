@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {getEquipData, getNewTkn} = require('../../utils/pfdParser')
+const {parserFunction} = require('../../utils/pfdParser')
 
 router.get('/', (req,res) => {
   res.json({message: "Listening"});
@@ -15,11 +15,12 @@ router.post('/jane', async (req, res) => {
   //NAME OF THE INPUT PDF FILE SELECTED
   pdfFileSelect = req.files.pdfFileSelect;
   pdfFilePath = __dirname + '../../../assets/files/toConvert.pdf'
-  console.log(pdfFileSelect)
 
   //USE mv TO MOVE FILE TO SERVER
-  pdfFileSelect.mv(pdfFilePath).then(() => {
-    console.log(res)
+  pdfFileSelect.mv(pdfFilePath).then(async () => {
+    return await parserFunction()
+  }).then(response => {
+    console.log(response)
   })
     /*, (err) => {
     if (err) return res.status(500).send(err);

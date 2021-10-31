@@ -18,7 +18,8 @@ const parserFunction = async () => {
   let vcc = -133;
   
   const pdfParser = new PDFParser();
-  pdfParser.loadPDF("../utils/toConvert.pdf");
+  let filePath = __dirname + "/../assets/files/toConvert.pdf"
+  pdfParser.loadPDF(filePath);
   //pdfParser.on("pdfParser_dataReady", pdfData => pdfData.Pages ? fs.writeFile("./testPdf/test.json", JSON.stringify(pdfData.Pages[6]), ()=>{console.log("Done.");}) : "All pages parsed");
   return new Promise ((res, rej) => {
     pdfParser.on("pdfParser_dataReady", pdfData => {
