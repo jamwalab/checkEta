@@ -1,5 +1,10 @@
-<form action="/api/parser/jane" method="POST" enctype="multipart/form-data">
+<!--<form action="/api/parser/jane" method="POST" enctype="multipart/form-data">
+  -->
+<form class="uploadFile">  
   <h3>Upload the Excel file</h3>
   <input type="file" name="pdfFileSelect" accept="application/pdf"></input>
-  <input type="submit"></input>
+  <input type="submit" class="submitPdfFile"></input>
 </form>
+{{#if fileReady}}
+  <a href="./assets/files/xlFileOutput.xls" download="convertedPdf.xls">Download Excel File</a>
+{{/if}}
