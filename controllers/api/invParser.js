@@ -16,7 +16,8 @@ router.post('/jane', async (req, res) => {
 
   //NAME OF THE INPUT PDF FILE SELECTED
   pdfFileSelect = req.files.pdfFileSelect;
-  pdfFilePath = path.join(__dirname + './assets/files/toConvert.pdf')
+  console.log(__dirname)
+  pdfFilePath = path.join(__dirname + '../../public/assets/files/toConvert.pdf')
   
   xlsFilePath= __dirname + "../../../assets/files/xlFileOutput.xls";
   
