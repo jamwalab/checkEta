@@ -1,9 +1,11 @@
 //---IMPORT DEPEMNDANCIES---//
-PDFParser = require("pdf2json");
+const PDFParser = require("pdf2json");
+const fs = require('fs')
 
-let allPdfData = [];
+let counter = 0;
 
 const parserFunction = async () => {
+  let allPdfData = [];
   //--FIND COODINATES OF THE COLUMNS
   let partNumber = -99;
   let yAxis = -999;
@@ -30,6 +32,7 @@ const parserFunction = async () => {
           //FOR EACH TEXT ON THE PAGE
           //ASSIGN LOCATION OF THE HEADERS
           page.Texts.forEach(text => {
+            //fs.writeFile("./testPdf/test.json", JSON.stringify(text), ()=>{console.log("Done.");})
             switch (text.R[0].T) {
               case "Item%20%23":
                 partNumber = text.x;
@@ -80,7 +83,9 @@ const parserFunction = async () => {
                   if (eachLine["Description"]) {
                     eachLine["Description"] = eachLine["Description"].replace(/\s\s+/g, ' ').trim();
                   }
-                  allPdfData.push(eachLine); //console.log(eachLine);
+                  counter++
+                  allPdfData.push(eachLine); 
+                  //console.log(counter);
                   eachLine = {};
                   eachLine["PartNumber"] = text.R[0].T.trim();
                 }
@@ -100,7 +105,9 @@ const parserFunction = async () => {
                   if (eachLine["Description"]) {
                     eachLine["Description"] = eachLine["Description"].replace(/\s\s+/g, ' ').trim();
                   }
-                  allPdfData.push(eachLine); //console.log(eachLine);
+                  counter++
+                  allPdfData.push(eachLine); 
+                  //console.log(counter);
                   eachLine = {};
                 }  
               }
@@ -146,6 +153,7 @@ const parserFunction = async () => {
   
       console.log(partNumber, description, hsCode, quantity, unitPrice, totWeight, vcc)
       //fs.writeFile("./testPdf/test.json", JSON.stringify(pdfData.Pages[6]), ()=>{console.log("Done.");})
+      //console.log(allPdfData)
       res(allPdfData);
       //fs.writeFile("./testPdf/test.json", JSON.stringify(allPdfData), ()=>{console.log("Done.");})
     }); 

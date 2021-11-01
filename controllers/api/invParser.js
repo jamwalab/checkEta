@@ -22,7 +22,9 @@ router.post('/jane', async (req, res) => {
   pdfFileSelect.mv(pdfFilePath).then(async () => {
     return await parserFunction()
   }).then(response => {
-    console.log(response)
+    let count = 0;
+    response.forEach(line => count++)
+    console.log(count)
     res.json(response);
     /*console.log(response)
     let wb = XLSX.utils.book_new();

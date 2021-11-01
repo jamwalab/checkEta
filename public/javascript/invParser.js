@@ -3,7 +3,7 @@ let date = new Date()
 console.log(date)
 const saveFileAsExcel = (buffer) => {
   const excelData = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8'})
-  saveAs(excelData, `convertedExcel.xls`)
+  saveAs(excelData, `JanePdfToExcel${date}.xls`)
 }
 
 const submitPdfLogic = async (event) => {
@@ -28,7 +28,7 @@ const submitPdfLogic = async (event) => {
     let wb = XLSX.utils.book_new();
     const ws = XLSX.utils.json_to_sheet(data);
     XLSX.utils.book_append_sheet(wb, ws, "myWorkSheet");
-
+    console.log(wb)
     const excelFileBuffer = XLSX.write(wb, {bookType:'xls', type: 'array'});
     saveFileAsExcel(excelFileBuffer)
   })
