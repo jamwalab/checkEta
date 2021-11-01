@@ -15,7 +15,7 @@ router.post('/jane', async (req, res) => {
 
   //NAME OF THE INPUT PDF FILE SELECTED
   pdfFileSelect = req.files.pdfFileSelect;
-  pdfFilePath = __dirname + '../../../assets/files/toConvert.pdf'
+  pdfFilePath = __dirname + '../../assets/files/toConvert.pdf'
   xlsFilePath= __dirname + "../../../assets/files/xlFileOutput.xls";
   
   //USE mv TO MOVE FILE TO SERVER
