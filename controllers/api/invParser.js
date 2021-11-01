@@ -22,10 +22,8 @@ router.post('/jane', async (req, res) => {
   pdfFileSelect.mv(pdfFilePath).then(async () => {
     return await parserFunction()
   }).then(response => {
-    let count = 0;
-    response.forEach(line => count++)
-    console.log(count)
     res.json(response);
+    ////XLSX MOVED TO FRONTEND -- BELOW CODE LEFT FOR REFERENCE IF IMPLEMENTED ON BACKEND
     /*console.log(response)
     let wb = XLSX.utils.book_new();
     //wb.SheetNames.push("pdfData");
@@ -48,11 +46,6 @@ router.post('/jane', async (req, res) => {
     var bin = XLSX.write(wb, {bookType:'xls',type: "binary"});
     return new Blob([this._binStr2ArrBuff(bin)], { type: "" });*/
   }).catch(err => console.log(err));
-    /*, (err) => {
-    if (err) return res.status(500).send(err);
-
-    res.send('File uploaded');
-  })*/
 })
 
 

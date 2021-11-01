@@ -1,34 +1,39 @@
 const $fileDownloadLink = document.querySelector("#fileDownloadLink");
+//--DATE TODAY--//
 let date = new Date()
 console.log(date)
+//--SAVE FILE FROM BUFFER--//
 const saveFileAsExcel = (buffer) => {
+  //create new blob
   const excelData = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8'})
+  //save file
   saveAs(excelData, `JanePdfToExcel${date}.xls`)
 }
 
+//--LOFIV FOR WHEN SUBMIT IS CLICKED--//
 const submitPdfLogic = async (event) => {
   event.preventDefault();
+  //get selected file
   const file = document.querySelector('[type=file]').files;
+  //create new form data for submit
   const formData = new FormData();
-  console.log(file)
   formData.append("pdfFileSelect", file[0]);
-  console.log(formData)
+
+  //post the pdf file for upload to server
   fetch('/api/parser/jane', {
     method: 'POST',
     body: formData
   }).then((response) => {
+    //response from server (array of objects for each line)
     return response.json();
   }).then(data => {
     console.log(data)
-    /*if (data.fileReady) {
-      let respBody = document.createElement("div");
-      respBody.innerHTML = `<a class="downloadLink" href="http://localhost:3001/assets/files/xlFileOutput.xls">Click here to download the excel file</a>`;
-      $fileDownloadLink.appendChild(respBody);
-    }*/
+    //workbook
     let wb = XLSX.utils.book_new();
+    //worksheet
     const ws = XLSX.utils.json_to_sheet(data);
     XLSX.utils.book_append_sheet(wb, ws, "myWorkSheet");
-    console.log(wb)
+    
     const excelFileBuffer = XLSX.write(wb, {bookType:'xls', type: 'array'});
     saveFileAsExcel(excelFileBuffer)
   })
