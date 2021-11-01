@@ -1,10 +1,15 @@
 <!--<form action="/api/parser/jane" method="POST" enctype="multipart/form-data">
   -->
-<form class="uploadFile">  
-  <h3>Upload the Excel file</h3>
-  <input type="file" name="pdfFileSelect" accept="application/pdf"></input>
-  <input type="submit" class="submitPdfFile"></input>
-</form>
-{{#if fileReady}}
-  <a href="./assets/files/xlFileOutput.xls" download="convertedPdf.xls">Download Excel File</a>
-{{/if}}
+<section></section>
+  <form method="post" enctype="multipart/form-data" class="uploadFile">  
+    <h3>Upload the Excel file</h3>
+    <input type="file" name="pdfFileSelect" accept="application/pdf"></input>
+    <input type="submit" class="submitPdfFile"></input>
+  </form>
+</section>
+<section id="fileDownloadLink">
+
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.3/xlsx.min.js" integrity="sha512-JiRzqZPYxjedpFqoYdKBcsKiBUfsmRZTyjuGlumbyJt4WJfWBZNqIizmbNgPN19VFtg3NYywvNk9lkt4KXVhiA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/javascript/fileSaver.js"></script>
+<script src="/javascript/invParser.js"></script>

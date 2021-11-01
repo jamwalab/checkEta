@@ -22,16 +22,19 @@ router.post('/jane', async (req, res) => {
   pdfFileSelect.mv(pdfFilePath).then(async () => {
     return await parserFunction()
   }).then(response => {
-    //console.log(response)
+    console.log(response)
+    res.json(response);
+    /*console.log(response)
     let wb = XLSX.utils.book_new();
     //wb.SheetNames.push("pdfData");
     const ws = XLSX.utils.json_to_sheet(response);
     //wb.Sheets["pdfData"] = ws;
-
+    console.log("aaaaa")
     XLSX.utils.book_append_sheet(wb, ws, "myWorkSheet");
     XLSX.writeFile(wb, xlsFilePath);
 
-    res.render('invParser', {"fileReady" : true});
+    //res.render('invParser', {"fileReady" : true});
+    res.json({"fileReady" : true})
     //XLSX.writeFileAsync(xlsFilePath, wb)
     //const wbout = XLSX.write(wb, {bookType:'xls',  type: 'binary'});
     //console.log(wbout)
