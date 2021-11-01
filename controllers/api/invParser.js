@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const {parserFunction} = require('../../utils/pfdParser')
 const XLSX = require('xlsx');
+const path = require('path');
 
 router.get('/', (req,res) => {
   res.json({message: "Listening"});
@@ -15,7 +16,8 @@ router.post('/jane', async (req, res) => {
 
   //NAME OF THE INPUT PDF FILE SELECTED
   pdfFileSelect = req.files.pdfFileSelect;
-  pdfFilePath = __dirname + '../../assets/files/toConvert.pdf'
+  pdfFilePath = path.join(__dirname + './assets/files/toConvert.pdf')
+  
   xlsFilePath= __dirname + "../../../assets/files/xlFileOutput.xls";
   
   //USE mv TO MOVE FILE TO SERVER
